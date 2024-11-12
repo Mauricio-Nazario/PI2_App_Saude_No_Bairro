@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Criar Paciente</title>
+    <link rel="stylesheet" href="{% static 'scheduler/styles.css' %}">
+</head>
+<body>
+    <h1>Adicionar Paciente</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'lista_pacientes' %}">Voltar</a>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            let cpf = document.querySelector('input[name="cpf"]').value;
+            cpf = cpf.replace(/\D/g, '');  // Remove tudo que não for número
+            if (cpf.length !== 11) {
+                alert('CPF inválido!');
+                event.preventDefault();  // Impede o envio do formulário
+            }
+        });
+    </script>
+    
+</body>
+</html>

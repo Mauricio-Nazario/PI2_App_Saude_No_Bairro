@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pacientes</title>
+    <link rel="stylesheet" href="{% static 'scheduler/styles.css' %}">
+</head>
+<body>
+    <h1>Lista de Pacientes</h1>
+    <table>
+        <tr>
+            <th>Nome Completo</th>
+            <th>Data de Nascimento</th>
+            <th>Telefone</th>
+            <th>UBS</th>
+        </tr>
+        {% for paciente in pacientes %}
+        <tr>
+            <td>{{ paciente.nome_completo }}</td>
+            <td>{{ paciente.data_nascimento }}</td>
+            <td>{{ paciente.telefone }}</td>
+            <td>{{ paciente.ubs }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'criar_paciente' %}">Adicionar Paciente</a>
+</body>
+</html>
